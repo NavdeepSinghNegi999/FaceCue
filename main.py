@@ -73,5 +73,5 @@ if(app_mode == "Image Emotion Prediction"):
             size = len(emotion_video_recommendations[result])
             index = int(np.random.rand()*size)
             video_type = emotion_video_recommendations[result][index]
-            webbrowser.open(f"https://www.youtube.com/results?search_query={video_type}")
+            webbrowser.open(f"https://www.youtube.com/results?search_query={'happy'}")
         
