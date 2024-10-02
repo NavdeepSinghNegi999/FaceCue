@@ -66,7 +66,10 @@ if(app_mode == "Image Emotion Prediction"):
         st.success(f"{result}")
 
         if(st.button("Recommend")):
-
+            st.write("Our Prediction")
+    
+            result = "angry"
+            st.success(f"{result}")
             size = len(emotion_video_recommendations[result])
             index = int(np.random.rand()*size)
             video_type = emotion_video_recommendations[result][index]
