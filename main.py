@@ -2,6 +2,7 @@ import keras
 import streamlit as st
 import numpy as np
 import cv2
+from helper import *
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, VideoProcessorBase, WebRtcMode
 
 
@@ -10,7 +11,7 @@ from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfigura
 #     model = keras.models.load_model("VGG16_model.h5")
 #     return model
 # model = load_my_model()
-# model = keras.models.load_model("VGG16_model.h5")
+model = keras.models.load_model(r"model/VGG16_model.h5")
 
 
 
@@ -30,7 +31,7 @@ def model_prediction(test_image):
     img_arr = np.array([img_to_arr]) 
     img_arr = img_arr/255.0
     
-    prediction = 1 #model.predict(img_arr)
+    prediction = model.predict(img_arr)
     result_index = np.argmax(prediction)
     
     return result_index
@@ -63,4 +64,11 @@ if(app_mode == "Image Emotion Prediction"):
         result_index  = model_prediction(test_image)
         result = index_to_emotion(result_index)
         st.success(f"{result}")
+
+        if(st.button("Recommend")):
+
+            size = len(emotion_video_recommendations[result])
+            index = int(np.random.rand()*size)
+            video_type = emotion_video_recommendations[result][index]
+            webbrowser.open(f"https://www.youtube.com/results?search_query={video_type}")
         
