@@ -4,4 +4,4 @@ keras
 opencv-contrib-python-headless
 tensorflow-cpu
 streamlit_webrtc
-web-browser
+
