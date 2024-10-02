@@ -3,6 +3,7 @@ import streamlit as st
 import numpy as np
 import cv2
 from helper import *
+import webbrowser
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, VideoProcessorBase, WebRtcMode
 
 
